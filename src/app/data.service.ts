@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class DataService {
-  todoURL = 'http://104.131.160.124:3001/api/budget';
+  // todoURL = 'http://localhost:3001/api/budget';
+  todoURL = 'http://104.248.6.129:3001/api/budget';
   // private loggedIn = new BehaviorSubject<boolean>(false);
   isloggedIn= false;
 
@@ -50,21 +51,24 @@ export class DataService {
 
   public getRefreshToken(email:string ,refreshToken:string)
   {
-    return this.http.post<any>(`http://104.131.160.124:3001/api/token`, { email, refreshToken });
+    // return this.http.post<any>(`http://localhost:3001/api/token`, { email, refreshToken });
+    return this.http.post<any>(`http://104.248.6.129:3001/api/token`, { email, refreshToken });
   }
   public deleteBudgetData(email:string ,title:string)
   {
-    return this.http.post<any>(`http://104.131.160.124:3001/api/deleteBudget`, { email, title });
+    // return this.http.post<any>(`http://localhost:3001/api/deleteBudget`, { email, title });
+    return this.http.post<any>(`http://104.248.6.129:3001/api/deleteBudget`, { email, title });
+
   }
 
   public addBudgetData(email:string ,title:string,value:number,expectedBudget:number, color:string)
   {
-    return this.http.post<any>(`http://104.131.160.124:3001/api/addBudget`, { email, title ,value,expectedBudget,color});
+    return this.http.post<any>(`http://104.248.6.129:3001/api/addBudget`, { email, title ,value,expectedBudget,color});
   }
 
   public updateBudgetData(email:string ,title:string,value:number,expectedBudget:number)
   {
-    return this.http.post<any>(`http://104.131.160.124:3001/api/updateBudget`, { email, title ,value,expectedBudget});
+    return this.http.post<any>(`http://104.248.6.129:3001/api/updateBudget`, { email, title ,value,expectedBudget});
   }
 
   // public getBudgetData(): Observable<any[]>
@@ -78,7 +82,7 @@ export class DataService {
   // }
 
   public login(username: string, password: string) {
-    return this.http.post<any>(`http://104.131.160.124:3001/api/login`, { username, password });
+    return this.http.post<any>(`http://104.248.6.129:3001/api/login`, { username, password });
         // .pipe( map(user => {
         //     // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
         //     // user.authdata = window.btoa(username + ':' + password);
@@ -90,7 +94,7 @@ export class DataService {
 
 public register(account: Account) {
   console.log(account)
-  return this.http.post<any>(`http://104.131.160.124:3001/api/register`,account);
+  return this.http.post<any>(`http://104.248.6.129:3001/api/register`,account);
       // .pipe( map(user => {
       //     // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
       //     // user.authdata = window.btoa(username + ':' + password);
